@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script defer src="assets/js/app.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="title">
+      <h1>My Task Board</h1>
+    </div>
+
+    <div id="grid">
+      <header> </header>
+      <div>
+        <form onsubmit="addTask(event)" id="tasksForm">
+          <label for="description"> description:</label>
+          <textarea id="description" required> </textarea>
+          <br /><br />
+          <label for="date"> date:</label>
+          <input type="date" id="date" required />
+          <br /><br />
+          <label for="time"> time:</label>
+          <input type="time" id="time" required />
+          <br /><br />
+
+          <div class="formButton">
+            <button>Add Task</button>
+            <button type="button" onclick="clearForm()"> Clear Form</button>
+          </div>
+        </form>
+      </div>
+      <div id="tasks">
+        <div id="tasksContainer"></div>
+      </div>
+    </div>
+  </body>
+</html>
