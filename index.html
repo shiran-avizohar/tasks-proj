@@ -8,34 +8,42 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <script defer src="assets/js/app.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
-    <title>Document</title>
+    <title>My to-do list</title>
   </head>
+
   <body>
     <div class="title">
       <h1>My Task Board</h1>
     </div>
 
     <div id="grid">
-      <header> </header>
+        <!-- Form for adding tasks -->
       <div>
         <form onsubmit="addTask(event)" id="tasksForm">
+          <!-- Task Description Field -->
           <label for="description"> Description:</label>
-          <textarea id="description" required> </textarea>
+          <textarea id="description" required></textarea>
           <br /><br />
+
+          <!-- Task date field -->
           <label for="date"> Date:</label>
           <input type="date" id="date" required />
           <br /><br />
+
+          <!-- Task time field -->
           <label for="time"> Time:</label>
           <input type="time" id="time" required />
           <br /><br />
 
+          <!-- Buttons for adding a task or clearing the form -->
           <div class="formButton">
             <button>Add Task</button>
             <button type="button" onclick="clearForm()"> Clear Form</button>
           </div>
         </form>
       </div>
+
+      <!-- Container to display all tasks -->
       <div id="tasks">
         <div id="tasksContainer"></div>
       </div>
