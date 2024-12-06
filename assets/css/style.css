@@ -1,11 +1,10 @@
- body {
+body {
     background-image: url('../image/tile.jpg');
     background-size: cover;
     background-color: #f0f0f0;
 }
 
 @font-face {
-    /* font-family: 'Fantasy'; */
     src: url('../fonts/Fantasy.otf') format('opentype');
 }
 
@@ -15,13 +14,16 @@
     justify-content: center; 
     align-items: center; 
     flex-direction: column;
+ 
+    
 }
 
-#tasks-form {
+#tasksForm {
     background-image: url('/assets/image/formbg.jpg');
     background-position: center;
+    /* height: 200px; */
     width: 500px;
-    margin: 0 auto 100px;
+    margin: 0 auto 100px ;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -30,23 +32,26 @@
 }
 
 textarea, input[type="date"], input[type="time"] {
-    width: 300px;
+    width: 300px; 
     padding: 3px;
     margin: 1px;
     border: 1px solid #ddd;
     font-size: 16px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; 
+    margin-right: auto; 
     text-align: center;
+
 }
 
-.form-button {
+
+.formButton {
     display: flex;          
     justify-content: center; 
     align-items: center;     
-    gap: 10px;
+    gap: 10px;          
 }
+
 
 #tasks {
     display: flex;
@@ -62,12 +67,14 @@ textarea, input[type="date"], input[type="time"] {
     background-image: url('/assets/image/notebg.png');
     background-size: cover;
     opacity: 0.5;
-    transition: opacity 0.6s ease-in;
-    align-items: flex-start;
+    transition: opacity 0.5s ease-in; 
+    opacity: 0.5; 
+    position: relative;
 }
 
 .task.show {
-    opacity: 1;
+
+    opacity: 1; 
 }
 
 .task > div:nth-child(2) {
@@ -81,12 +88,11 @@ textarea, input[type="date"], input[type="time"] {
 
 .task > div > img {
     width: 16px;
-    height: 16px; /* Fixed height to prevent layout shift */
-    visibility: hidden; /* Reserve space for the icon */
+    display: none;
 }
 
 .task:hover > div > img {
-    visibility: visible; /* Show the icon on hover */
+    display: block;
 }
 
 .task > div > img:hover {
@@ -96,28 +102,53 @@ textarea, input[type="date"], input[type="time"] {
 .close-icon {
     display: flex;
     justify-content: flex-end;
+    position: absolute;
 }
 
-.task-content {
+.taskContent {
     flex: 1;
     text-align: center;
     padding: 10px;
     font-size: 16px;
+    font-family:monospace;
     overflow: auto;
-    margin-top: 0; /* Removed margin to prevent shifting */
+    margin-top: 30px;
+    word-wrap: break-word;
 }
 
-.task-footer {
+.taskFooter {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: flex-start;
     align-items: flex-start;
-    font-size: 0.9em;
-    font-weight: bold;
+    font-size: 15px;
     color: #555;
 }
 
-.task-footer .data.date,
-.task-footer .data.time {
-    margin-bottom: 5px;
+.taskFooter .data.date,
+.taskFooter .data.time {
+    margin-bottom: 5px; 
+}
+
+.taskFooter {
+font-family: fantasy;
+font-size: 0.8em;
+color: #51504e;
+}
+
+.close-icon i {
+    display: none;
+}
+
+
+.task:hover .close-icon i {
+    display: block;
+    font-size: 20px;
+    cursor: pointer;
+    color: #f00;
+}
+
+
+.task:hover .close-icon i:hover {
+    color: #b00; 
 }
