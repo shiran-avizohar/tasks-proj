@@ -1,5 +1,4 @@
-
-body {
+ body {
     background-image: url('../image/tile.jpg');
     background-size: cover;
     background-color: #f0f0f0;
@@ -16,20 +15,13 @@ body {
     justify-content: center; 
     align-items: center; 
     flex-direction: column;
- 
-    
 }
 
-
-
-
-
-#tasksForm {
+#tasks-form {
     background-image: url('/assets/image/formbg.jpg');
     background-position: center;
-    /* height: 200px; */
     width: 500px;
-    margin: 0 auto 100px ;
+    margin: 0 auto 100px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -38,26 +30,23 @@ body {
 }
 
 textarea, input[type="date"], input[type="time"] {
-    width: 300px; 
+    width: 300px;
     padding: 3px;
     margin: 1px;
     border: 1px solid #ddd;
     font-size: 16px;
     display: block;
-    margin-left: auto; 
-    margin-right: auto; 
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
-
 }
 
-
-.formButton {
+.form-button {
     display: flex;          
     justify-content: center; 
     align-items: center;     
-    gap: 10px;          
+    gap: 10px;
 }
-
 
 #tasks {
     display: flex;
@@ -72,18 +61,13 @@ textarea, input[type="date"], input[type="time"] {
     height: 250px;
     background-image: url('/assets/image/notebg.png');
     background-size: cover;
+    opacity: 0.5;
+    transition: opacity 0.6s ease-in;
+    align-items: flex-start;
 }
 
-/* מצב ברירת המחדל של המשימה */
-.task {
-    opacity: 0.5; /* התחל עם שקיפות 0 */
-    transition: opacity 0.5s ease-in; /* אפקט שקיפות שיתבצע במשך 0.5 שניות */
-}
-
-/* מצב כאשר המשימה הוספה */
 .task.show {
-
-    opacity: 1; /* שים את השקיפות ל-100% כאשר המשימה מוצגת */
+    opacity: 1;
 }
 
 .task > div:nth-child(2) {
@@ -97,11 +81,12 @@ textarea, input[type="date"], input[type="time"] {
 
 .task > div > img {
     width: 16px;
-    display: none;
+    height: 16px; /* Fixed height to prevent layout shift */
+    visibility: hidden; /* Reserve space for the icon */
 }
 
 .task:hover > div > img {
-    display: block;
+    visibility: visible; /* Show the icon on hover */
 }
 
 .task > div > img:hover {
@@ -113,31 +98,26 @@ textarea, input[type="date"], input[type="time"] {
     justify-content: flex-end;
 }
 
-.taskContent {
+.task-content {
     flex: 1;
     text-align: center;
     padding: 10px;
     font-size: 16px;
     overflow: auto;
-    margin-top: 30px;
+    margin-top: 0; /* Removed margin to prevent shifting */
 }
 
-.taskFooter {
+.task-footer {
     display: flex;
-    flex-direction: column; /* סידור התוכן בעמודה */
+    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    font-size: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
     color: #555;
 }
 
-.taskFooter .data.date,
-.taskFooter .data.time {
-    margin-bottom: 5px; /* מרווח בין התאריך לשעה */
-}
-
-.taskFooter {
-font-weight: bold;
-font-size: 0.9em;
-color: #555;
+.task-footer .data.date,
+.task-footer .data.time {
+    margin-bottom: 5px;
 }
