@@ -47,7 +47,6 @@ function clearForm() {
 
 // Function to save a task in localStorage
 function saveTaskToStorage(taskObject) {
-  
     const currentTasksInStorageJSON = localStorage.getItem('tasks')  // get JSON from local storage
     const currentTasksInStorage = JSON.parse(currentTasksInStorageJSON)    // convert JSON to JavaScript object
     currentTasksInStorage.push(taskObject)    // the object I got is an array, push another item to the array
@@ -73,7 +72,6 @@ function initStorage() {
     if(!currentTasksInStorageJSON) {
         localStorage.setItem('tasks', JSON.stringify([]))
     }
-    
 }
 
 // Function to get the tasks in localStorage
