@@ -1,3 +1,5 @@
+
+// Function to collect data from the form
 function collectData() {
     const description = document.getElementById('description').value
     const date = document.getElementById('date').value
@@ -11,11 +13,12 @@ function collectData() {
     }
 }
 
+// Function to generate HTML for a new task
 function generateHTML(data , show) {
         const newHTML = `
         <div class="task ${show}" data-index="${data.index}">
             <div class="close-icon">
-                <img src="assets/image/picX.png" onclick="deleteTask(${data.index})">
+                 <i class="bi bi-x" onclick="deleteTask(${data.index})"></i>
             </div>
             <div class="taskContent"> ${data.description}</div>
             <div class="taskFooter">
@@ -28,39 +31,31 @@ function generateHTML(data , show) {
     return newHTML
 }
 
-
-
+// Function to display the HTML created on the page
 function renderHTML(newHTML) {
     const tasksContainer = document.getElementById('tasks')
     tasksContainer.innerHTML += newHTML
 }
 
+// Function to clear the form after adding a task
 function clearForm() {
     const tasksForm = document.getElementById('tasksForm')
     tasksForm.reset()
-
     const descriptionInput = document.getElementById('description')
     descriptionInput.focus()
 }
 
-
-
+// Function to save a task in localStorage
 function saveTaskToStorage(taskObject) {
-    // get JSON from local storage
-    const currentTasksInStorageJSON = localStorage.getItem('tasks')
+    const currentTasksInStorageJSON = localStorage.getItem('tasks')  // get JSON from local storage
+    const currentTasksInStorage = JSON.parse(currentTasksInStorageJSON)    // convert JSON to JavaScript object
+    currentTasksInStorage.push(taskObject)    // the object I got is an array, push another item to the array
+    localStorage.setItem('tasks', JSON.stringify(currentTasksInStorage))    // save it back to the local storage
 
-    // convert JSON to JavaScript object
-    const currentTasksInStorage = JSON.parse(currentTasksInStorageJSON)
-
-    // the object I got is an array, push another item to the array
-    currentTasksInStorage.push(taskObject)
-
-    // save it back to the local storage
-    localStorage.setItem('tasks', JSON.stringify(currentTasksInStorage))
 }
 
+// Function to implement tasks from localStorage
 function loadTasksFromLocalStorage() {
-
     const tasksJSON = localStorage.getItem('tasks')
     if(tasksJSON) {
         const tasks = JSON.parse(tasksJSON)
@@ -71,84 +66,59 @@ function loadTasksFromLocalStorage() {
     }
 }
 
+// Function to initialize localStorage if it is empty
 function initStorage() {
     const currentTasksInStorageJSON = localStorage.getItem('tasks')
     if(!currentTasksInStorageJSON) {
         localStorage.setItem('tasks', JSON.stringify([]))
     }
-    
 }
 
+// Function to get the tasks in localStorage
 function getNumberOfTasksInLocalStorage() {
     return JSON.parse(localStorage.getItem('tasks')).length
 }
 
-// function addTask(event) {
-//     event.preventDefault()
-//     const data = collectData()
-//     const newHTML = generateHTML(data)
-//     renderHTML(newHTML)
-//     saveTaskToStorage(data)
-//     clearForm()
-// }
-
+// Function to add a task
 function addTask(event) {
     event.preventDefault();
     const data = collectData();
     const newHTML = generateHTML(data, "");
     renderHTML(newHTML);
 
-    // מציאת המשימה החדשה
     const taskElement = document.querySelector(`.task[data-index="${data.index}"]`);
-    
-    // הוספת מחלקת 'show' אחרי שהמשימה הוצגה
     setTimeout(() => {
         taskElement.classList.add('show');
-    }, 10); // מחכים 10ms כדי להפעיל את האנימציה אחרי שהדף נטען
+    }, 10); 
 
-    saveTaskToStorage(data);
-    clearForm();
+    saveTaskToStorage(data); // Save the task to localStorage
+    clearForm(); // Clear the form
 }
 
-
-// function deleteTask(index) {
-//     alert(`will delete item #${index} from local storage`)
-//     const tasks = JSON.parse(localStorage.getItem('tasks'));
-//     tasks.splice(index, 1);
-//     localStorage.setItem('tasks', JSON.stringify(tasks));
-//     document.getElementById('tasks').innerHTML = '';
-//     loadTasksFromLocalStorage();
-// }
-
-
+// Function to delete a task
 function deleteTask(index) {
     alert(`will delete item #${index} from local storage`);
     const tasks = JSON.parse(localStorage.getItem('tasks'));
     tasks.splice(index, 1);
     localStorage.setItem('tasks', JSON.stringify(tasks));
 
-    // מצא את האלמנט עם ה- data-index המתאים וימחק אותו
     const taskElement = document.querySelector(`.task[data-index="${index}"]`);
-    taskElement.remove(); // מוחק את המשימה הספציפית מתוך הדף
+    taskElement.remove();
 }
 
+// Function to display all tasks in localStorage
 function renderTasks() {
-    // טוען את כל המשימות מ-localStorage
     const tasksContainer = document.getElementById('tasks');
-    tasksContainer.innerHTML = ''; // מנקה את התוכן הקיים
+    tasksContainer.innerHTML = ''; 
 
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-    // מציג את כל המשימות מחדש
     tasks.forEach(task => {
-        const newHTML = generateHTML(task); // יוצר את ה-HTML של כל משימה
-        tasksContainer.innerHTML += newHTML; // מוסיף את ה-HTML החדש
-    });
-
-    
+        const newHTML = generateHTML(task); 
+        tasksContainer.innerHTML += newHTML; 
+    }); 
 }
 
-
-
+// Initialize localStorage and load tasks from the repository
 initStorage()
 loadTasksFromLocalStorage()

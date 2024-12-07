@@ -1,33 +1,28 @@
-
+/* Adding a background to a page */
 body {
     background-image: url('../image/tile.jpg');
     background-size: cover;
     background-color: #f0f0f0;
 }
 
+/* Add a new font */
 @font-face {
-    /* font-family: 'Fantasy'; */
     src: url('../fonts/Fantasy.otf') format('opentype');
 }
 
+/* Style for the title */
 .title {
     font-family: 'Fantasy';
     display: flex;
     justify-content: center; 
     align-items: center; 
     flex-direction: column;
- 
-    
 }
 
-
-
-
-
+/* Style for the task form */
 #tasksForm {
     background-image: url('/assets/image/formbg.jpg');
     background-position: center;
-    /* height: 200px; */
     width: 500px;
     margin: 0 auto 100px ;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -37,6 +32,7 @@ body {
     flex-direction: column;
 }
 
+/* Designing input fields */
 textarea, input[type="date"], input[type="time"] {
     width: 300px; 
     padding: 3px;
@@ -47,24 +43,23 @@ textarea, input[type="date"], input[type="time"] {
     margin-left: auto; 
     margin-right: auto; 
     text-align: center;
-
 }
 
-
-.formButton {
+/* Style for the form button */
+.form-button {
     display: flex;          
     justify-content: center; 
     align-items: center;     
     gap: 10px;          
 }
-
-
+/* Style for displaying all tasks */
 #tasks {
     display: flex;
     flex-direction: row;
     margin-top: 50px;
 }
 
+/* Style for each task */
 .task {
     display: flex;
     flex-direction: column;
@@ -72,20 +67,18 @@ textarea, input[type="date"], input[type="time"] {
     height: 250px;
     background-image: url('/assets/image/notebg.png');
     background-size: cover;
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in; 
+    opacity: 0.5; 
+    position: relative;
 }
 
-/* מצב ברירת המחדל של המשימה */
-.task {
-    opacity: 0.5; /* התחל עם שקיפות 0 */
-    transition: opacity 0.5s ease-in; /* אפקט שקיפות שיתבצע במשך 0.5 שניות */
-}
-
-/* מצב כאשר המשימה הוספה */
+/* Status when the task was added */
 .task.show {
-
-    opacity: 1; /* שים את השקיפות ל-100% כאשר המשימה מוצגת */
+    opacity: 1; 
 }
 
+/* Style for additional parts within the task */
 .task > div:nth-child(2) {
     overflow-y: scroll;
 }
@@ -95,49 +88,61 @@ textarea, input[type="date"], input[type="time"] {
     flex-direction: row-reverse;
 }
 
-.task > div > img {
-    width: 16px;
-    display: none;
-}
-
-.task:hover > div > img {
-    display: block;
-}
-
-.task > div > img:hover {
-    cursor: pointer;
-}
-
+/* Style for close icon */
 .close-icon {
     display: flex;
     justify-content: flex-end;
+    position: absolute;
 }
 
+/* Style for the task content */
 .taskContent {
     flex: 1;
     text-align: center;
     padding: 10px;
     font-size: 16px;
+    font-family:monospace;
     overflow: auto;
     margin-top: 30px;
+    word-wrap: break-word;
 }
 
 .taskFooter {
     display: flex;
-    flex-direction: column; /* סידור התוכן בעמודה */
+    flex-direction: column; 
     justify-content: flex-start;
     align-items: flex-start;
     font-size: 15px;
     color: #555;
 }
 
+/* Style for date and time */
 .taskFooter .data.date,
 .taskFooter .data.time {
-    margin-bottom: 5px; /* מרווח בין התאריך לשעה */
+    margin-bottom: 5px; 
 }
 
+/* Additional style for date and time */
 .taskFooter {
-font-weight: bold;
-font-size: 0.9em;
-color: #555;
+font-family: fantasy;
+font-size: 0.8em;
+color: #51504e;
+}
+
+/* Additional style for the close icon */
+.close-icon i {
+    display: none;
+}
+
+/* Display the icon when the mouse hovers over the task */
+.task:hover .close-icon i {
+    display: block;
+    font-size: 20px;
+    cursor: pointer;
+    color: #f00;
+}
+
+/* Change icon color when mouse hovers over */
+.task:hover .close-icon i:hover {
+    color: #b00; 
 }
