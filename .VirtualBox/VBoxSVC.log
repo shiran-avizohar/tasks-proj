@@ -1,0 +1,16 @@
+27:05:17.365141 MainPower Log continuation - Log started 2024-10-07T17:48:54.725536000Z
+27:05:17.504589 dns-monitor HostDnsMonitor: updating information
+27:05:17.504656 dns-monitor HostDnsMonitor: unchanged
+27:05:19.921228 dns-monitor HostDnsMonitor: updating information
+27:05:19.921285 dns-monitor HostDnsMonitor: unchanged
+27:05:21.106277          Saving settings file "C:\Users\Shiran\.VirtualBox\VirtualBox.xml" with version "1.12-windows"
+27:05:23.244762          Finished saving settings file "C:\Users\Shiran\.VirtualBox\VirtualBox.xml"
+27:05:23.321834          Saving settings file "C:\Users\Shiran\.VirtualBox\VirtualBox.xml" with version "1.12-windows"
+27:05:23.347816          Finished saving settings file "C:\Users\Shiran\.VirtualBox\VirtualBox.xml"
+27:05:23.378694          Saving settings file "C:\Users\Shiran\.VirtualBox\VirtualBox.xml" with version "1.12-windows"
+27:05:23.410774          Finished saving settings file "C:\Users\Shiran\.VirtualBox\VirtualBox.xml"
+27:08:00.440729 main     VirtualBox: object deletion starts
+27:08:00.447146 main     HostDnsMonitor: shutting down ...
+27:08:00.447261 main     HostDnsMonitor: shut down
+27:08:00.460025 Watcher  ERROR [COM]: aRC=E_ACCESSDENIED (0x80070005) aIID={d644ad1e-c501-4fc7-9ab6-aa6d763bc540} aComponent={VirtualBoxWrap} aText={The object is not ready}, preserve=false aResultDetail=0
+27:08:00.463698 main     VirtualBox: object deleted
